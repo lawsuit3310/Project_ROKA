@@ -10,6 +10,7 @@ public class CharcterStopState : MonoBehaviour, ICharacterState
             _controller = (CharacterController)controller;
         }
 
-        _controller.MoveStatus.CurrentMovSpd = 0;
+        _controller.MoveStatus.Reset();
+        _controller.MoveStatus.Stop();
     }
 }

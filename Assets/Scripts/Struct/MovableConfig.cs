@@ -7,14 +7,22 @@ public struct MovableConfig
 {
     public static float MovSpd = 2;
     public float CurrentMovSpd;
-    //이동 방향
+    
+    //이동 방향 - 해당 좌표는 움직이는 주체를 중심으로 얼마나 떨어진 위치를 향해 이동하는 지를 나타냄.
     public Vector3 CurrentTargetPosition;
-    public Vector3 LookPoint;
+    public Vector3 TargetPosition;
 
     public void Reset()
     {
         CurrentMovSpd = MovSpd;
         CurrentTargetPosition = Vector3.zero;
-        LookPoint = Vector3.zero;
+        TargetPosition = Vector3.zero;
+    } 
+    
+    public void Stop()
+    {
+        CurrentMovSpd = 0;
+        CurrentTargetPosition = Vector3.zero;
+        TargetPosition = Vector3.zero;
     }   
 }

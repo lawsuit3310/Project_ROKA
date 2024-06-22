@@ -13,9 +13,56 @@ public class PlayerController : CharacterController
 
     IEnumerator PlayerControl()
     {
+        bool isMoving = false, isInput = false;
         while (true)
         {
-            yield return null;
+            isInput = false;
+            
+            if (Input.GetKey(KeyCode.W))
+            {
+                isInput = true;
+                MoveStatus.TargetPosition.z = 10;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                isInput = true;
+                MoveStatus.TargetPosition.z = - 10;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                isInput = true;
+                MoveStatus.TargetPosition.x = - 10;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                isInput = true;
+                MoveStatus.TargetPosition.x = 10;
+            }
+            
+            if(Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
+                MoveStatus.TargetPosition.z = 0;
+            if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+                MoveStatus.TargetPosition.x = 0;
+            
+            if (!isInput)
+            {
+                if(isMoving)
+                {
+                    isMoving = false;
+                    Stop();
+                    MoveStatus.TargetPosition = Vector3.zero;
+                }
+                yield return null;
+            }
+            else
+            {
+                if (!isMoving)
+                {
+                    isMoving = true;
+                    Move();
+                }
+                yield return null;
+            }
         }
     }
 }

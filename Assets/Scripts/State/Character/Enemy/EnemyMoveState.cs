@@ -4,8 +4,7 @@ public class EnemyMoveState : CharacterMoveState
 {
     protected override Vector3 CalcTargetPosition()
     {
-        _controller.MoveStatus.CurrentTargetPosition =
-            EnemyController.Player.transform.position;
-        return base.CalcTargetPosition();
+        var dir = _controller.MoveStatus.TargetPosition;
+        return dir;
     }
 }
