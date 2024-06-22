@@ -1,14 +1,21 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class PlayerController : CharacterController
 {
+    private PlayerSightController _sight;
     protected override void Awake()
     {
         base.Awake();
         Destroy(_moveState as CharacterMoveState);
         _moveState = gameObject.AddComponent<PlayerMoveState>();
         StartCoroutine(PlayerControl());
+    }
+
+    private void Start()
+    {
+        _sight = gameObject.AddComponent<PlayerSightController>();
     }
 
     IEnumerator PlayerControl()

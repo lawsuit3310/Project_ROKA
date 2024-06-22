@@ -50,9 +50,9 @@ public class EnemyObjectPool : MonoBehaviour
               Destroy(enemy.gameObject);
        }
 
-       public void Spawn()
+       private void Spawn()
        {
-              var amount = Random.Range(1, 10);
+              var amount = Random.Range(1, maxPoolSize);
 
               for (int i = 0; i < amount; i++)
               {
@@ -60,9 +60,9 @@ public class EnemyObjectPool : MonoBehaviour
                      var pos = Random.insideUnitSphere * 50;
                      pos.y = 0;
                      enemy.transform.position = pos;
+                     enemy.transform.SetParent(this.transform);
               }
        }
-
        private void OnGUI()
        {
               if (GUILayout.Button("소환"))
