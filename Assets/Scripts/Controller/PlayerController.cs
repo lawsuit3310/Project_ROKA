@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class PlayerController : CharacterController
 {
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         Destroy(_moveState as CharacterMoveState);
         _moveState = gameObject.AddComponent<PlayerMoveState>();
         StartCoroutine(PlayerControl());

@@ -9,7 +9,7 @@ public class CharacterController : IController
     public FightableConfig FightableConfig;
     public MovableConfig MoveStatus;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         _context = new CharacterContext(this);
 
