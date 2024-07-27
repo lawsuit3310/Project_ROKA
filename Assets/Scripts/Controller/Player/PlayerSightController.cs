@@ -3,10 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class CharacterSightController : MonoBehaviour
+public class PlayerSightController : CharacterSightController
 {
-    public Camera cam;
-    public Vector3 point;
 
     private void Awake()
     {
@@ -19,7 +17,7 @@ public class CharacterSightController : MonoBehaviour
     }
 
 
-    IEnumerator Sighting()
+    public override IEnumerator Sighting()
     {
         while (true)
         {

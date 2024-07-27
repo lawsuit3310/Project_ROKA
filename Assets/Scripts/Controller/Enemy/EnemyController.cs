@@ -20,13 +20,14 @@ public class EnemyController : CharacterController
         Player = !Player ? FindObjectOfType<PlayerController>() : Player;
         Destroy(_moveState as CharacterMoveState);
         _moveState = gameObject.AddComponent<EnemyMoveState>();
+        
+        Sight = gameObject.AddComponent<EnemySightController>();
     }
 
     private void OnEnable()
     {
         if (Vector3.Distance(this.transform.position, Player.transform.position) < 10)
         {
-            Debug.Log(Vector3.Distance(this.transform.position, Player.transform.position));
             switch (Random.Range(0,4))
             {
                 case 0:
@@ -44,7 +45,6 @@ public class EnemyController : CharacterController
             }
         }
         Move();
-        StartCoroutine(FollowPlayer());
     }
 
     private void OnDisable()
@@ -63,19 +63,4 @@ public class EnemyController : CharacterController
         Pool.Release(this);
     }
     
-    IEnumerator FollowPlayer()
-    {
-        Player = !Player ? FindObjectOfType<PlayerController>() : Player;
-        while(true)
-        {
-            if (!_isAttacking)
-                MoveStatus.TargetPosition = Player.transform.position - this.transform.position;
-            else
-            {
-                //TODO
-                // 공격 상태 진입
-            }
-            yield return null;
-        }
-    }
 }

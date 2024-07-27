@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public CharacterController shooter;
+    private Vector3 _dir = Vector3.zero;
     
     //총알이 충돌했는지 여부를 저장
     private bool _flag = false;
@@ -20,11 +21,20 @@ public class Bullet : MonoBehaviour
 
     IEnumerator GoForward()
     {
-        var dir = (shooter.Sight.point - shooter.transform.position).normalized;
+        RaycastHit hit;
+        _dir = (shooter.Sight.point - shooter.transform.position).normalized;
         for (var i =0; i < 200 || _flag; i++)
         {
-            var displacement = dir * (Time.deltaTime * 150);
+            var displacement = _dir * (Time.deltaTime * 150);
             this.transform.Translate(displacement, Space.World);
+
+            if (Physics.Raycast(this.transform.position + _dir, _dir, out hit,  3.5f ))
+            {
+                //충돌 안되면 제일 먼저 레이어 부터 확인 할 것.
+                Debug.Log(hit.collider.name);
+                break;
+            }
+            
             yield return null;
         }
         Destroy(this.gameObject);

@@ -15,7 +15,7 @@ public class PlayerController : CharacterController
 
     private void Start()
     {
-        Sight = gameObject.AddComponent<CharacterSightController>();
+        Sight = gameObject.AddComponent<PlayerSightController>();
         using (var factory = new EquipmentFactory())
         {
             Equip = factory.CreateEquipment(0, this);

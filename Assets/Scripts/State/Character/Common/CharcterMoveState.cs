@@ -19,15 +19,13 @@ public class CharacterMoveState : MonoBehaviour, ICharacterState
     {
         if (_controller)
         {
-            if (_controller.MoveStatus.CurrentMovSpd > 0)
+            if (_controller.MoveStatus.CurrentMovSpd > 0.1f)
             {
-                // 기본 이동 알고리즘.  
-                var v = (CalcTargetPosition().normalized) *
-                        _controller.MoveStatus.CurrentMovSpd;
-                v *= Time.deltaTime;
-                
-                _controller.transform.Translate(v);
-                _controller.MoveStatus.CurrentTargetPosition = _controller.MoveStatus.TargetPosition;
+                //  // 기본 이동 알고리즘.  
+                var dir = CalcTargetPosition().normalized;
+                var displacement = dir * (Time.deltaTime * _controller.MoveStatus.CurrentMovSpd);
+                this.transform.Translate(displacement, Space.World);
+
             }
         }
     }
