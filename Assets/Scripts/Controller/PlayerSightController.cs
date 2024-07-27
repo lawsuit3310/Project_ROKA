@@ -26,11 +26,17 @@ public class PlayerSightController : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out hit))
             {
-                var v = hit.point;
-                
-                Debug.Log(v);
-                this.transform.LookAt(v);
-                point = hit.point;
+                if(!hit.collider.CompareTag("Player"))
+                {
+                    if (!hit.collider.CompareTag("Enemy"))
+                        point = hit.point;
+                    else
+                        point = hit.point - new Vector3(hit.point.x, hit.point.y, hit.point.z);
+                }
+                else
+                {
+                    Debug.Log("Ray hit to Player");
+                }
             }
             // var offset = new Vector2(mPos.x - scrPos.x, mPos.y - scrPos.y);
             // float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;

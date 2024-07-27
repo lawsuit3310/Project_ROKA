@@ -20,21 +20,33 @@ public class PlayerController : CharacterController
 
     IEnumerator PlayerControl()
     {
-        bool isMoving = false, isInput = false;
+        bool isMoving = false;
         while (true)
         {
             yield return null;
             if (_sight is null) continue;
-            if (Input.GetMouseButton(1))
+            
+            this.Object.LookAt(_sight.point);
+            
+            if (Input.GetMouseButton(0))
             {
-                if (!isMoving) Move();
+                if (!isMoving)
+                {
+                    Move();
+                    isMoving = true;
+                }
                 MoveStatus.TargetPosition = _sight.point;
             }
             else
             {
-                if (Vector3.Distance(this.transform.position, _sight.point) < 0.001f )
+                var dis = Vector3.Distance(this.transform.position, MoveStatus.TargetPosition);
+                if (dis < 1f)
                 {
-                    if (!isMoving) Stop();
+                    if (isMoving)
+                    {
+                        Stop();
+                        isMoving = false;
+                    }
                 }
             }
         }

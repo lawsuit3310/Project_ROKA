@@ -4,6 +4,7 @@ using UnityEngine;
 public class CharacterController : IController
 {
     protected ICharacterState _stopState, _moveState, _attackState, _beatenState;
+    protected Transform Object;
     private ICharacterContext _context;
     
     public FightableConfig FightableConfig;
@@ -15,6 +16,8 @@ public class CharacterController : IController
 
         _stopState = gameObject.AddComponent<CharcterStopState>();
         _moveState = gameObject.AddComponent<CharacterMoveState>();
+
+        Object = gameObject.GetComponentInChildren<Transform>();
     }
 
     public void Move()
