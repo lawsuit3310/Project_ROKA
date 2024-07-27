@@ -21,7 +21,6 @@ public class CharacterMoveState : MonoBehaviour, ICharacterState
             if (_controller.MoveStatus.CurrentMovSpd > 0)
             {
                 // 기본 이동 알고리즘.  
-                //this.transform.LookAt(CalcTargetPosition());
                 var v = (CalcTargetPosition().normalized) *
                         _controller.MoveStatus.CurrentMovSpd;
                 v *= Time.deltaTime;

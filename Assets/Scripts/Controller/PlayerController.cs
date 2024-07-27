@@ -23,52 +23,19 @@ public class PlayerController : CharacterController
         bool isMoving = false, isInput = false;
         while (true)
         {
-            isInput = false;
-            
-            if (Input.GetKey(KeyCode.W))
+            yield return null;
+            if (_sight is null) continue;
+            if (Input.GetMouseButton(1))
             {
-                isInput = true;
-                MoveStatus.TargetPosition.z = 10;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                isInput = true;
-                MoveStatus.TargetPosition.z = - 10;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                isInput = true;
-                MoveStatus.TargetPosition.x = - 10;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                isInput = true;
-                MoveStatus.TargetPosition.x = 10;
-            }
-            
-            if(Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S))
-                MoveStatus.TargetPosition.z = 0;
-            if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
-                MoveStatus.TargetPosition.x = 0;
-            
-            if (!isInput)
-            {
-                if(isMoving)
-                {
-                    isMoving = false;
-                    Stop();
-                    MoveStatus.TargetPosition = Vector3.zero;
-                }
-                yield return null;
+                if (!isMoving) Move();
+                MoveStatus.TargetPosition = _sight.point;
             }
             else
             {
-                if (!isMoving)
+                if (Vector3.Distance(this.transform.position, _sight.point) < 0.001f )
                 {
-                    isMoving = true;
-                    Move();
+                    if (!isMoving) Stop();
                 }
-                yield return null;
             }
         }
     }
