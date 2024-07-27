@@ -1,0 +1,3 @@
+index,EquipmentType,AttackPoint,AttackCoolDown,ReloadCoolDown,MaxCapacity,Name,Explanation
+0,1,1,5,5,5,"플린트락 권총","설명"
+1,0,1,0,1,1,"맨주먹","설명"

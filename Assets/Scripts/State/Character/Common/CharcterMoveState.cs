@@ -10,8 +10,9 @@ public class CharacterMoveState : MonoBehaviour, ICharacterState
         if (!_controller)
         {
             _controller = (CharacterController)controller;
-        }
-        _controller.MoveStatus.CurrentMovSpd = MovableConfig.MovSpd;
+        }           
+        _controller.MoveStatus.CurrentMovSpd = _controller.MoveStatus.MovSpd == 0 ? MovableConfig.DefaultMovSpd : _controller.MoveStatus.MovSpd;
+
     }
 
     protected virtual void Update()
