@@ -29,12 +29,6 @@ public class BeatenTimer : MonoBehaviour
         GC.SuppressFinalize(_sharedMat);
     }
 
-    private void OnDestroy()
-    {
-        GC.SuppressFinalize(_renderers);
-        GC.SuppressFinalize(_sharedMat);
-    }
-
     IEnumerator flickering()
     {
         // *주의* UTS를 사용중인 머테리얼 에서만 동작
