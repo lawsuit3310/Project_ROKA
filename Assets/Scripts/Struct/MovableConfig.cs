@@ -23,7 +23,7 @@ public struct MovableConfig
     public void Stop()
     {
         CurrentMovSpd = 0;
-        CurrentTargetPosition = Vector3.zero;
-        TargetPosition = Vector3.zero;
+        //CurrentTargetPosition = Vector3.zero;
+        //TargetPosition = Vector3.zero;
     }   
 }

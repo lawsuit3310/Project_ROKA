@@ -9,7 +9,9 @@ public class PlayerController : CharacterController
     {
         base.Awake();
         Destroy(_moveState as CharacterMoveState);
+        Destroy(_stopState as CharcterStopState);
         _moveState = gameObject.AddComponent<PlayerMoveState>();
+        _stopState = gameObject.AddComponent<PlayerStopState>();
         StartCoroutine(PlayerControl());
     }
 
@@ -19,6 +21,14 @@ public class PlayerController : CharacterController
         using (var factory = new EquipmentFactory())
         {
             Equip = factory.CreateEquipment(0, this);
+        }
+    }
+    
+    private void OnGUI()
+    {
+        if (GUILayout.Button("Damage 1 to Player"))
+        {
+            GiveDamage(this);
         }
     }
 

@@ -42,17 +42,19 @@ public class BeatenTimer : MonoBehaviour
 
         var org_base = (
             from r in _renderers
+            where r.sharedMaterial.shader.name == "UnityChanToonShader/Toon_DoubleShadeWithFeather"
             select r.sharedMaterial.GetColor("_BaseColor")).ToArray();
         var org_1st  = (
             from r in _renderers
+            where r.sharedMaterial.shader.name  == "UnityChanToonShader/Toon_DoubleShadeWithFeather"
             select r.sharedMaterial.GetColor("_1st_ShadeColor")).ToArray();
         var org_2nd = (
             from r in _renderers
+            where r.sharedMaterial.shader.name  == "UnityChanToonShader/Toon_DoubleShadeWithFeather"
             select r.sharedMaterial.GetColor("_2nd_ShadeColor")).ToArray();
         
         while (this.enabled)
         {
-            Debug.Log(true);
             mpb.SetColor("_BaseColor", Color.red);
             mpb.SetColor("_1st_ShadeColor", Color.red);
             mpb.SetColor("_2nd_ShadeColor", Color.red);
