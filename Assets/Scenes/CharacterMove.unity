@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 468148937}
   - component: {fileID: 468148934}
   - component: {fileID: 468148938}
+  - component: {fileID: 468148939}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -242,6 +243,18 @@ MonoBehaviour:
     CurrentMovSpd: 20
     CurrentTargetPosition: {x: 0, y: 0, z: 0}
     TargetPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &468148939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468148933}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799fdc8e5c1b4d09895762f4b688ec8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &567455827
 PrefabInstance:
   m_ObjectHideFlags: 0
