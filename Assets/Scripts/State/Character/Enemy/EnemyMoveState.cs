@@ -5,7 +5,7 @@ public class EnemyMoveState : CharacterMoveState
     private EnemyController enmCon;
     protected override Vector3 CalcTargetPosition()
     {
-        var dir = _controller.MoveStatus.TargetPosition;
+        var dir = _controller.MoveStatistics.TargetPosition;
         if (_controller is EnemyController)
         {
             enmCon = (EnemyController)_controller;

@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
 
     IEnumerator GoForward()
     {
-        RaycastHit hit;
+        RaycastHit hit = new RaycastHit();
         _dir = (shooter.Sight.point - shooter.transform.position).normalized;
         for (var i =0; i < 200 || _flag; i++)
         {
@@ -32,11 +32,21 @@ public class Bullet : MonoBehaviour
             {
                 //충돌 안되면 제일 먼저 레이어 부터 확인 할 것.
                 Debug.Log(hit.collider.name);
-                break;
+               break;
             }
             
             yield return null;
         }
+        //TODO 데미지 처리
+
+        if(hit.collider)
+        {
+            if (hit.collider.TryGetComponent<CharacterController>(out CharacterController controller))
+            {
+                controller.GiveDamage(shooter);
+            }
+        }
+        
         Destroy(this.gameObject);
     }
 }

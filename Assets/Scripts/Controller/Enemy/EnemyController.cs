@@ -52,15 +52,23 @@ public class EnemyController : CharacterController
         ResetEnemy();
     }
 
+    public override void OnDamaged()
+    {
+        base.OnDamaged();
+    }
+
     private void ResetEnemy()
     {
         //적 체력등 재설정
         Stop();
     }
+    
 
     public void ReturnToPool()
     {
         Pool.Release(this);
     }
+
+    
     
 }

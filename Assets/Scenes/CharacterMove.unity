@@ -233,8 +233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e36c89b3dd43a9a3fe52aa2a5079a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _statistics:
+    HitPoint: 0
+    CurrentHitPoint: 0
   Sight: {fileID: 0}
-  MoveStatus:
+  MoveStatistics:
     MovSpd: 20
     CurrentMovSpd: 20
     CurrentTargetPosition: {x: 0, y: 0, z: 0}
@@ -772,10 +775,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab35ee527d624c8db1cecf9b6ce1c898, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _statistics:
+    HitPoint: 5
+    CurrentHitPoint: 0
   Sight: {fileID: 0}
-  MoveStatus:
-    MovSpd: 0
-    CurrentMovSpd: 1
+  MoveStatistics:
+    MovSpd: 2
+    CurrentMovSpd: 2
     CurrentTargetPosition: {x: 0, y: 0, z: 0}
     TargetPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1826489260

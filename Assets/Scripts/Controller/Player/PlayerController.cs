@@ -44,11 +44,11 @@ public class PlayerController : CharacterController
                     Move();
                     isMoving = true;
                 }
-                MoveStatus.TargetPosition = Sight.point;
+                MoveStatistics.TargetPosition = Sight.point;
             }
             else
             {
-                var dis = Vector3.Distance(this.transform.position, MoveStatus.TargetPosition);
+                var dis = Vector3.Distance(this.transform.position, MoveStatistics.TargetPosition);
                 if (dis < 1f)
                 {
                     if (isMoving)
