@@ -13,5 +13,6 @@ public class CharacterDeadState : MonoBehaviour, ICharacterState
 
         _controller.moveStatistics.Reset();
         _controller.anim.SetTrigger("Dead");
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 }

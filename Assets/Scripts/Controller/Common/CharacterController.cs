@@ -16,6 +16,7 @@ public class CharacterController : IController, IFightable
     public Animator anim;
     [FormerlySerializedAs("MoveStatistics")] public MovableConfig moveStatistics;
     public FightableConfig Statistics => _statistics;
+    public bool IsDead => _statistics.CurrentHitPoint <= 0;
     
     
     protected virtual void Awake()
@@ -29,9 +30,10 @@ public class CharacterController : IController, IFightable
         _deadState = gameObject.AddComponent<CharacterDeadState>();
 
         Object = gameObject.GetComponentInChildren<Transform>();
-        _statistics.CurrentHitPoint = _statistics.HitPoint;
-
         anim = transform.GetComponentInChildren<Animator>();
+        
+        _statistics.CurrentHitPoint = _statistics.HitPoint;
+        moveStatistics.CurrentMovSpd = moveStatistics.MovSpd == 0 ? MovableConfig.DefaultMovSpd : moveStatistics.MovSpd;
     }
 
     public void Move()
@@ -86,16 +88,7 @@ public class CharacterController : IController, IFightable
 
     public virtual void OnDead()
     {
-        if (_context is CharacterContext)
-        {
-            //공격 이전 상태를 찾음
-            var crnt = ((CharacterContext)_context).CurrentState;
-            _context.Transition(_deadState);
-            //공격 이전 상태로 복귀
-            _context.Transition(crnt ?? _stopState);
-        }
-        else
-            _context.Transition(_deadState);
+        _context.Transition(_deadState);
     }
     
     

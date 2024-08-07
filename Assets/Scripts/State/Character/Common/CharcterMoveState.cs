@@ -10,14 +10,14 @@ public class CharacterMoveState : MonoBehaviour, ICharacterState
         if (!_controller)
         {
             _controller = (CharacterController)controller;
-        }           
-        _controller.moveStatistics.CurrentMovSpd = _controller.moveStatistics.MovSpd == 0 ? MovableConfig.DefaultMovSpd : _controller.moveStatistics.MovSpd;
-
+        }       
+        
+        _controller.moveStatistics.ResetSpd();
     }
 
     protected virtual void Update()
     {
-        if (_controller && _controller.Statistics.CurrentHitPoint > 0)
+        if (_controller && !_controller.IsDead)
         {
             if (_controller.moveStatistics.CurrentMovSpd > 0.1f)
             {
