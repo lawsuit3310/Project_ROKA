@@ -25,7 +25,7 @@ public class BulletContorller : MonoBehaviour
             transform.Translate(_direction * BulletSpd);
             yield return null;
         }
-        Debug.Log("최대 사정거리 도달");
+        // /Debug.Log("최대 사정거리 도달");
         Destroy(this.gameObject);
     }
 }

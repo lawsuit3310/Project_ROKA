@@ -27,7 +27,7 @@ public class PlayerSightController : CharacterSightController
                 if(!hit.collider.CompareTag("Player"))
                 {
                     if (!hit.collider.CompareTag("Enemy"))
-                        point = hit.point;
+                        yield return point = hit.point - Vector3.up * hit.point.y + Vector3.up * this.transform.position.y;
                     else
                         point = hit.point - new Vector3(hit.point.x, hit.point.y, hit.point.z);
                 }

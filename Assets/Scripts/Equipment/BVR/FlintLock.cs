@@ -20,6 +20,16 @@ public class FlintLock : Equipment
         var bullet = Object.Instantiate(_bulletPrefabs);
         bullet.transform.position = EquipObject.transform.position;
         bullet.AddComponent<Bullet>().Launch(this);
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
         Debug.Log("플린트락 발사");
     }
 }
