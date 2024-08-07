@@ -21,7 +21,7 @@ public class EnemyController : CharacterController
         Destroy(_moveState as CharacterMoveState);
         _moveState = gameObject.AddComponent<EnemyMoveState>();
         
-        Sight = gameObject.AddComponent<EnemySightController>();
+        sight = gameObject.AddComponent<EnemySightController>();
     }
 
     private void OnEnable()

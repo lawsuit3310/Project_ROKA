@@ -9,6 +9,6 @@ public class PlayerStopState : CharcterStopState
             _controller = (PlayerController)controller;
         }
 
-        _controller.MoveStatistics.Stop();
+        _controller.moveStatistics.Stop();
     }
 }

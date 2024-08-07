@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     IEnumerator GoForward()
     {
         RaycastHit hit = new RaycastHit();
-        _dir = (shooter.Sight.point - shooter.transform.position).normalized;
+        _dir = (shooter.sight.point - shooter.transform.position).normalized;
         for (var i =0; i < 200 || _flag; i++)
         {
             var displacement = _dir * (Time.deltaTime * 150);

@@ -237,8 +237,9 @@ MonoBehaviour:
   _statistics:
     HitPoint: 100
     CurrentHitPoint: 0
-  Sight: {fileID: 0}
-  MoveStatistics:
+  sight: {fileID: 0}
+  anim: {fileID: 0}
+  moveStatistics:
     MovSpd: 20
     CurrentMovSpd: 20
     CurrentTargetPosition: {x: 0, y: 0, z: 0}
@@ -326,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: dd6ec75974b69a3409711f8110698bbb, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a0702f03fac0faa4d983e423203b2fb4, type: 2}
+      objectReference: {fileID: 9100000, guid: ff178fa7015ef7548b070ae39fbbf890, type: 2}
     - target: {fileID: 13700004, guid: dd6ec75974b69a3409711f8110698bbb, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
@@ -706,7 +707,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: dd6ec75974b69a3409711f8110698bbb, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a0702f03fac0faa4d983e423203b2fb4, type: 2}
+      objectReference: {fileID: 22100000, guid: 2e41bc94819591c429e86e93cef2e293, type: 2}
     - target: {fileID: 13700004, guid: dd6ec75974b69a3409711f8110698bbb, type: 3}
       propertyPath: m_DirtyAABB
       value: 0
@@ -897,8 +898,9 @@ MonoBehaviour:
   _statistics:
     HitPoint: 15
     CurrentHitPoint: 0
-  Sight: {fileID: 0}
-  MoveStatistics:
+  sight: {fileID: 0}
+  anim: {fileID: 0}
+  moveStatistics:
     MovSpd: 2
     CurrentMovSpd: 2
     CurrentTargetPosition: {x: 0, y: 0, z: 0}

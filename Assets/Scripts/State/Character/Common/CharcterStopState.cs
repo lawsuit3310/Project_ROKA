@@ -10,7 +10,7 @@ public class CharcterStopState : MonoBehaviour, ICharacterState
             _controller = (CharacterController)controller;
         }
 
-        _controller.MoveStatistics.Reset();
-        _controller.MoveStatistics.Stop();
+        _controller.moveStatistics.Reset();
+        _controller.moveStatistics.Stop();
     }
 }

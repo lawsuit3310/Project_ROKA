@@ -12,8 +12,9 @@ public class CharacterController : IController, IFightable
     private FightableConfig _statistics;
     
     public Equipment Equip;
-    public CharacterSightController Sight;
-    public MovableConfig MoveStatistics;
+    public CharacterSightController sight;
+    public Animator anim;
+    [FormerlySerializedAs("MoveStatistics")] public MovableConfig moveStatistics;
     public FightableConfig Statistics => _statistics;
     
     
@@ -30,7 +31,7 @@ public class CharacterController : IController, IFightable
         Object = gameObject.GetComponentInChildren<Transform>();
         _statistics.CurrentHitPoint = _statistics.HitPoint;
 
-
+        anim = transform.GetComponentInChildren<Animator>();
     }
 
     public void Move()

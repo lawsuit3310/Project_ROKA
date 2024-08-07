@@ -17,7 +17,7 @@ public class PlayerController : CharacterController
 
     private void Start()
     {
-        Sight = gameObject.AddComponent<PlayerSightController>();
+        sight = gameObject.AddComponent<PlayerSightController>();
         using (var factory = new EquipmentFactory())
         {
             Equip = factory.CreateEquipment(0, this);
@@ -38,9 +38,9 @@ public class PlayerController : CharacterController
         while (true)
         {
             yield return null;
-            if (Sight is null) continue;
+            if (sight is null) continue;
             
-            this.Object.LookAt(Sight.point);
+            this.Object.LookAt(sight.point);
 
             if (Input.GetMouseButtonDown(1))
             {
@@ -54,11 +54,11 @@ public class PlayerController : CharacterController
                     Move();
                     isMoving = true;
                 }
-                MoveStatistics.TargetPosition = Sight.point;
+                moveStatistics.TargetPosition = sight.point;
             }
             else
             {
-                var dis = Vector3.Distance(this.transform.position, MoveStatistics.TargetPosition);
+                var dis = Vector3.Distance(this.transform.position, moveStatistics.TargetPosition);
                 if (dis < 1f)
                 {
                     if (isMoving)

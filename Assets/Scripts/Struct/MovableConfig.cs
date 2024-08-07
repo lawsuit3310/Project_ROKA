@@ -15,7 +15,7 @@ public struct MovableConfig
 
     public void Reset()
     {
-        CurrentMovSpd = MovSpd;
+        MovSpd = CurrentMovSpd = 0;
         CurrentTargetPosition = Vector3.zero;
         TargetPosition = Vector3.zero;
     } 

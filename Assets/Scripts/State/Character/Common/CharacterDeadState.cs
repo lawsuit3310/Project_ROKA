@@ -9,7 +9,9 @@ public class CharacterDeadState : MonoBehaviour, ICharacterState
         {
             _controller = (CharacterController)controller;
             
-        } 
-        Debug.Log("Dead");
+        }
+
+        _controller.moveStatistics.Reset();
+        _controller.anim.SetTrigger("Dead");
     }
 }
