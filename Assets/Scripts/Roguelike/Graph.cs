@@ -30,6 +30,8 @@ namespace Roguelike
         public int GetHeight(){return height;}
         public char[] GetSerialized(){return serialized;}
         public List<Node> GetVertexes(){return vertexes;}
+         
+        public List<Edge> GetEdges() { return edges; }
 
         private int maxDepth = 5;
 

@@ -5,23 +5,40 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    public TMP_Text txt;
+    public GameObject tile;
+    public PlayerController player;
 
-    public void Awake()
+    private void Awake()
     {
-        var g = new Graph(240, 70);
+        CreateWorld(200, 200);
+    }
+
+    public void CreateWorld(int w, int h)
+    {
+        var g = new Graph(w, h);
         g.Create();
-        txt.text = "";
         int col = 0;
+        int row = 0;
         foreach (char c in g.GetSerialized())
         {
-            txt.text += c;
+            var t = Instantiate(tile, transform, true);
+            t.transform.position = new Vector3(col, c == '#' ? 1 : 0, row);
             if (++col == g.GetWidth())
             {
                 col = 0;
-                txt.text += '\n';
+                row++;
             }
         }
-        Debug.Log(col);
+
+        System.Random rand = new();
+
+        int id = rand.Next() % g.GetEdges().Count;
+        var playerController = Instantiate(player);
+        var p = playerController.gameObject.AddComponent<Player>();
+        p.Instanitate(g, id);
+
     }
+
+   
+    
 }
